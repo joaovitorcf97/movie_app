@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/movies_model.dart';
+import 'package:movie_app/pages/details_page.dart';
 
 import '../utils/apis_utils.dart';
 
@@ -15,55 +16,71 @@ class CustomListCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
-      child: Container(
-        height: 200,
-        decoration: BoxDecoration(
-          color: Colors.black54,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Row(
-          children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(12),
-                bottomLeft: Radius.circular(12),
+      child: Material(
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => DetailsPage(movie: movie),
+                fullscreenDialog: true,
               ),
-              child: Image.network(
-                API.REQUEST_IMG(movie.posterPath),
-                loadingBuilder: (_, child, loadingProgress) {
-                  if (loadingProgress == null) return child;
+            );
+          },
+          child: Container(
+            height: 200,
+            decoration: BoxDecoration(
+              color: Colors.black54,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Row(
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(12),
+                    bottomLeft: Radius.circular(12),
+                  ),
+                  child: Hero(
+                    tag: movie.id,
+                    child: Image.network(
+                      API.REQUEST_IMG(movie.posterPath),
+                      loadingBuilder: (_, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
 
-                  return const Center(child: CircularProgressIndicator());
-                },
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      movie.title,
-                      style: Theme.of(context).textTheme.headline6,
-                      softWrap: true,
-                      overflow: TextOverflow.visible,
+                        return const Center(child: CircularProgressIndicator());
+                      },
                     ),
-                    const Spacer(),
-                    Text(
-                      'Popularidade: ${movie.popularity.toString()}',
-                      softWrap: true,
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Votos: ${movie.voteAverage.toString()}',
-                      softWrap: true,
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          movie.title,
+                          style: Theme.of(context).textTheme.headline6,
+                          softWrap: true,
+                          overflow: TextOverflow.visible,
+                        ),
+                        const Spacer(),
+                        Text(
+                          'Popularidade: ${movie.popularity.toString()}',
+                          softWrap: true,
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Votos: ${movie.voteAverage.toString()}',
+                          softWrap: true,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
