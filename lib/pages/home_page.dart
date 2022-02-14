@@ -36,12 +36,20 @@ class _HomePageState extends State<HomePage> {
                     visible: movies != null,
                     child: Padding(
                       padding: const EdgeInsets.only(top: 8, left: 16),
-                      child: Text(
-                        'Movies',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline4!
-                            .copyWith(fontWeight: FontWeight.w700),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Movies',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline4!
+                                .copyWith(fontWeight: FontWeight.w700),
+                          ),
+                          TextField(
+                            onChanged: _controller.onChanged,
+                          ),
+                        ],
                       ),
                     ),
                   );
