@@ -12,6 +12,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   dio:
   lottie:
+  cached_network_image:
   shared_preferences:
 
 dev_dependencies:
