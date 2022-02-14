@@ -13,41 +13,58 @@ class CustomListCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      decoration: BoxDecoration(color: Colors.black54),
-      child: Row(
-        children: [
-          Image.network(
-            API.REQUEST_IMG(movie.posterPath),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    movie.title,
-                    style: Theme.of(context).textTheme.headline6,
-                    softWrap: true,
-                    overflow: TextOverflow.visible,
-                  ),
-                  const Spacer(),
-                  Text(
-                    'Popularidade: ${movie.popularity.toString()}',
-                    softWrap: true,
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Votos: ${movie.voteAverage.toString()}',
-                    softWrap: true,
-                  ),
-                ],
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Container(
+        height: 200,
+        decoration: BoxDecoration(
+          color: Colors.black54,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(12),
+                bottomLeft: Radius.circular(12),
+              ),
+              child: Image.network(
+                API.REQUEST_IMG(movie.posterPath),
+                loadingBuilder: (_, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+
+                  return const Center(child: CircularProgressIndicator());
+                },
               ),
             ),
-          ),
-        ],
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      movie.title,
+                      style: Theme.of(context).textTheme.headline6,
+                      softWrap: true,
+                      overflow: TextOverflow.visible,
+                    ),
+                    const Spacer(),
+                    Text(
+                      'Popularidade: ${movie.popularity.toString()}',
+                      softWrap: true,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Votos: ${movie.voteAverage.toString()}',
+                      softWrap: true,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
