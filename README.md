@@ -1,16 +1,27 @@
-# movie_app
+# Movies App
 
-A new Flutter project.
+<p>
+  <img width="400" alt="" src="assets/screen.png">
+  <img width="400" alt="" src="assets/screen2.png">
+</p>
 
-## Getting Started
+<br/>
 
-This project is a starting point for a Flutter application.
+## 💻 Project
 
-A few resources to get you started if this is your first Flutter project:
+An application that aims to study Flutter and Dart
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## 🚀 Technologies
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This project was developed with the following technologies:
+
+- [Flutter](https://flutter.dev/)
+- [Dart](https://dart.dev/)
+- [tab_indicator_styler](https://pub.dev/packages/tab_indicator_styler)
+- [flutter_svg](https://pub.dev/packages/flutter_svg)
+
+
+
+## 📄 License
+
+This project is under the MIT license.
