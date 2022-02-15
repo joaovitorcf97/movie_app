@@ -11,14 +11,15 @@
 
 An application that aims to study Flutter and Dart
 
-## 🚀 Technologies
+## 🚀 Packages
 
-This project was developed with the following technologies:
+This project was developed with the following packages:
 
 - [Flutter](https://flutter.dev/)
-- [Dart](https://dart.dev/)
-- [tab_indicator_styler](https://pub.dev/packages/tab_indicator_styler)
-- [flutter_svg](https://pub.dev/packages/flutter_svg)
+- [dio](https://pub.dev/packages/dio)
+- [lottie](https://pub.dev/packages/lottie)
+- [cached_network_image](https://pub.dev/packages/cached_network_image)
+- [shared_preferences](https://pub.dev/packages/shared_preferences)
 
 
 
